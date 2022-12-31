@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: web-ui
+  name: web-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-ui
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: web-ui
+    spec:
+      containers:
+        - image: harbor.cubexs.dev/prjctrepo/web-ui:${VERSION}
+          imagePullPolicy: Always
+          name: web-ui
+      imagePullSecrets:
+        - name: prjctps-pull-secret
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
