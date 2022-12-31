@@ -1,0 +1,9 @@
+node_modules*
+dist
+.storybook
+doc
+lib
+scripts
+storybook-static
+.cache
+*.md
